@@ -5,6 +5,9 @@ int leftRangeArray = InputNumber("Введите значение начала �
 int rigthRangeArray = InputNumber("Введите значение конца диапазона: ");
 double[] arrayRealNumbers = FillArrayWithRandomRealNumbers(sizeArray, leftRangeArray, rigthRangeArray);
 PrintArray(arrayRealNumbers);
+FindingMaxMin(arrayRealNumbers, out double min, out double max);
+System.Console.WriteLine($"Минимальное значение массива min = {min}\nМаксимальное значение массива max = {max}");
+System.Console.WriteLine($"Разница между максимальным и минимальным элементом массива равна: {max} - {min} = {max - min}");
 
 double[] FillArrayWithRandomRealNumbers(int size, int leftRange, int rigthRange)
 {
@@ -36,4 +39,39 @@ int InputNumber(string invitationText)
 		System.Console.WriteLine("Введено неверное значение. Необходимо ввести число!");
 	}
 	return inputNum;
+}
+
+void FindingMaxMin(double[] sourceArray, out double min, out double max)
+{
+	if (sourceArray[0] < sourceArray[1])
+	{
+		min = sourceArray[0];
+		max = sourceArray[1];
+	}
+	else
+	{
+		min = sourceArray[1];
+		max = sourceArray[0];
+	}
+	int i = 2;
+	while (i < sourceArray.Length)
+	{
+		if (min < sourceArray[i])
+		{
+			if (max > sourceArray[i])
+			{
+				i++;
+			}
+			else
+			{
+				max = sourceArray[i];
+				i++;
+			}
+		}
+		else
+		{
+			min = sourceArray[i];
+			i++;
+		}
+	}
 }
