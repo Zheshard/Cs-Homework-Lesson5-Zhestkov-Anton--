@@ -5,6 +5,7 @@ const int LEFT_RANGE_ARRAY = 100;
 const int RIGTH_RANGE_ARRAY = 999;
 int[] arrayPositive3DigitNumbers = FillArrayWithRandomNumbers(SIZE_ARRAY, LEFT_RANGE_ARRAY, RIGTH_RANGE_ARRAY);
 PrintArray(arrayPositive3DigitNumbers);
+System.Console.WriteLine(CountingEvenNumbers(arrayPositive3DigitNumbers));
 
 int[] FillArrayWithRandomNumbers(int size, int leftRange, int rigthRange)
 {
@@ -20,4 +21,17 @@ int[] FillArrayWithRandomNumbers(int size, int leftRange, int rigthRange)
 void PrintArray(int[] outputArray)
 {
 	System.Console.WriteLine(string.Join("; ", outputArray));
+}
+
+int CountingEvenNumbers(int[] sourceArray)
+{
+	int count = 0;
+	for (int i = 0; i < sourceArray.Length; i++)
+	{
+		if (sourceArray[i] % 2 == 0)
+		{
+			count++;
+		}
+	}
+	return count;
 }
